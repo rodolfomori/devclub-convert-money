@@ -1,6 +1,22 @@
 const convertButton = document.querySelector('.convert-button')
 const currencySelect = document.querySelector('.currency-select')
 
+async function data(){
+
+  try{
+    const data = await(await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL')).json()
+    console.log(data)
+
+  }catch(err){
+    console.error(err)
+  }
+
+  // const newData = await data.json()
+
+}
+
+data()
+
 function convertValues() {
   const inputCurrencyValue = document.querySelector('.input-currency').value
   const currencyValueToConvert = document.querySelector(
@@ -35,19 +51,11 @@ function convertValues() {
 
 function changeCurrency() {
   const currencyName = document.getElementById('currency-name')
-  const currencyImage = document.querySelector('.currency-img')
 
-  if (currencySelect.value == 'dolar') {
-    currencyName.innerHTML = 'Dólar americano'
-    currencyImage.src = './assets/dolar.png'
-  }
+  if (currencySelect.value == 'dolar') {}
 
-  if (currencySelect.value == 'euro') {
-    currencyName.innerHTML = 'Euro'
-    currencyImage.src = './assets/euro.png'
-  }
 
-  convertValues()
+  // currencyName.innerHTML = 
 }
 
 currencySelect.addEventListener('change', changeCurrency)
